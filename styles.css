@@ -1,0 +1,57 @@
+tr,
+input {
+  border: 1px solid;
+  border-color: gray;
+  border-radius: 10px;
+  width: 80px;
+  height: 80px;
+  font-size: 30px;
+  margin: 5px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.green {
+  background-color: green;
+  color: white;
+}
+
+.orange {
+  background-color: orange;
+  color: white;
+}
+
+.grey {
+  background-color: #808080;
+  color: white;
+}
+
+#submit-done {
+  border: 1px solid;
+  border-color: gray;
+  border-radius: 10px;
+  background-color: white;
+  font-size: 20px;
+  margin-left: 190px;
+  margin-top: 20px;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  color: grey;
+}
+
+#winning-message {
+  width: 200px;
+  border: 1px solid;
+  border-color: gray;
+  border-radius: 10px;
+  background-color: white;
+  font-size: 20px;
+  margin-left: 125px;
+  margin-top: 20px;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+  background-color: black;
+}

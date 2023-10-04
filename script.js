@@ -162,18 +162,18 @@ function checkWord() {
         .getElementById(numOfTries.toString() + a.toString())
         .setAttribute("class", "grey");
   }
-  moveToNextRow();
+  //moveToNextRow();
 }
 
 // Move on to next row for next guess
-function moveToNextRow() {
-  console.log("hi");
-  let button = document.getElementById("submit-done");
-  button.remove();
-  userInput = [];
-  generateRow();
-  randomWordArray = randomWordString.split("");
-}
+// function moveToNextRow() {
+//   console.log("hi");
+//   let button = document.getElementById("submit-done");
+//   button.remove();
+//   userInput = [];
+//   generateRow();
+//   randomWordArray = randomWordString.split("");
+// }
 
 // Display losing message if all 6 rows have been guessed without success
 
