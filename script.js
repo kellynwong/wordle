@@ -40,6 +40,25 @@ function selectWordForGame() {
 console.log(randomWordArray);
 
 // Generate a row of 6 squares (row) when DOM is loaded
+generateRow();
+function generateRow() {
+  numOfTries += 1;
+  let title = document.createElement("h1");
+  document.body.appendChild(title);
+  let row = document.createElement("tr");
+  document.body.appendChild(row);
+  for (let y = 0; y < 5; y++) {
+    let input = document.createElement("input");
+    input.setAttribute("type", "text");
+    input.setAttribute("maxlength", "1");
+    input.setAttribute("id", numOfTries.toString() + y.toString());
+    input.setAttribute("class", numOfTries);
+    input.setAttribute("style", "text-transform: uppercase");
+    input.addEventListener("keydown", validateUserInput);
+    row.appendChild(input);
+  }
+}
+
 // Validate user's input - that they are alphabets
 // Generate button to submit word once user has entered 5 alphabets
 // Display winning message if all 5 spots match
