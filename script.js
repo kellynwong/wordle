@@ -60,6 +60,53 @@ function generateRow() {
 }
 
 // Validate user's input - that they are alphabets
+
+// https://forum.freecodecamp.org/t/pass-the-event-to-the-callback-within-the-event-listener-that-triggered-it/258259/8
+let alphabets = [
+  "a",
+  "b",
+  "c",
+  "d",
+  "e",
+  "f",
+  "g",
+  "h",
+  "i",
+  "j",
+  "k",
+  "l",
+  "m",
+  "n",
+  "o",
+  "p",
+  "q",
+  "r",
+  "s",
+  "t",
+  "u",
+  "v",
+  "w",
+  "x",
+  "y",
+  "z",
+  "tab",
+];
+
+function validateUserInput(e) {
+  console.log(e);
+  if (e.key === "Backspace" || e.key === "Delete") {
+    userInput.pop();
+  } else if (alphabets.includes(e.key.toLowerCase()) === false) {
+    alert("This is not an alphabet!");
+  } else if (e.key != "Tab") {
+    userInput.push(e.key.toLowerCase());
+    console.log(userInput);
+  }
+  if (userInput.length === 5) {
+    generateButton();
+  }
+}
+
 // Generate button to submit word once user has entered 5 alphabets
 // Display winning message if all 5 spots match
 // Colour box green if letter guessed is in correct spot
