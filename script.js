@@ -108,6 +108,15 @@ function validateUserInput(e) {
 }
 
 // Generate button to submit word once user has entered 5 alphabets
+function generateButton() {
+  const button = document.createElement("button");
+  button.setAttribute("type", "submit");
+  button.setAttribute("id", "submit-done");
+  button.innerText = "SUBMIT";
+  document.body.append(button);
+  button.addEventListener("click", checkWord);
+}
+
 // Display winning message if all 5 spots match
 // Colour box green if letter guessed is in correct spot
 // Colour box orange if letter guessed is in wrong spot
