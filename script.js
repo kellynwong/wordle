@@ -40,27 +40,36 @@ function selectWordForGame() {
 console.log(randomWordArray);
 
 // Generate a row of 6 squares (row) when DOM is loaded
+// Display losing message if all 6 rows have been guessed without success
 generateRow();
 function generateRow() {
   numOfTries += 1;
-  let title = document.createElement("h1");
-  document.body.appendChild(title);
-  let row = document.createElement("tr");
-  document.body.appendChild(row);
-  for (let y = 0; y < 5; y++) {
-    let input = document.createElement("input");
-    input.setAttribute("type", "text");
-    input.setAttribute("maxlength", "1");
-    input.setAttribute("id", numOfTries.toString() + y.toString());
-    input.setAttribute("class", numOfTries);
-    input.setAttribute("style", "text-transform: uppercase");
-    input.addEventListener("keydown", validateUserInput);
-    row.appendChild(input);
+  if (numOfTries <= 6) {
+    let title = document.createElement("h1");
+    document.body.appendChild(title);
+    let row = document.createElement("div");
+    document.body.appendChild(row);
+    for (let y = 0; y < 5; y++) {
+      let input = document.createElement("input");
+      input.setAttribute("type", "text");
+      input.setAttribute("maxlength", "1");
+      input.setAttribute("id", "a" + numOfTries.toString() + y.toString());
+      input.setAttribute("class", numOfTries);
+      input.setAttribute("style", "text-transform: uppercase");
+      input.addEventListener("keydown", validateUserInput);
+      row.appendChild(input);
+    }
+  } else {
+    let loseMessage = document.createElement("div");
+    loseMessage.setAttribute("id", "losing-message");
+    loseMessage.innerHTML =
+      "You have tried 6 times unsuccessfully, you have lost!";
+    document.body.append(loseMessage);
+    return;
   }
 }
 
 // Validate user's input - that they are alphabets
-
 // https://forum.freecodecamp.org/t/pass-the-event-to-the-callback-within-the-event-listener-that-triggered-it/258259/8
 let alphabets = [
   "a",
@@ -131,13 +140,21 @@ function checkWord() {
     winMessage.setAttribute("id", "winning-message");
     winMessage.innerHTML = "You have won";
     document.body.append(winMessage);
+
+    for (let b = 0; b <= 4; b++) {
+      document
+        .getElementById("a" + numOfTries.toString() + b.toString())
+        .setAttribute("class", "green");
+    }
+
+    return;
   }
 
   let index = [];
   for (let a = 0; a < randomWordArray.length; a++) {
     if (randomWordArray[a] === userInput[a]) {
       document
-        .getElementById(numOfTries.toString() + a.toString())
+        .getElementById("a" + numOfTries.toString() + a.toString())
         .setAttribute("class", "green");
       randomWordArray[a] = "9";
       userInput[a] = "9";
@@ -151,7 +168,7 @@ function checkWord() {
   for (let a = 0; a < userInput.length; a++) {
     if (randomWordArray.includes(userInput[a]) && !index.includes(a)) {
       document
-        .getElementById(numOfTries.toString() + a.toString())
+        .getElementById("a" + numOfTries.toString() + a.toString())
         .setAttribute("class", "orange");
       let num = randomWordArray.findIndex((letter) => letter === userInput[a]);
       randomWordArray[num] = "9";
@@ -159,22 +176,18 @@ function checkWord() {
       index.push(a);
     } else if (randomWordArray[a] != userInput[a])
       document
-        .getElementById(numOfTries.toString() + a.toString())
+        .getElementById("a" + numOfTries.toString() + a.toString())
         .setAttribute("class", "grey");
   }
-  //moveToNextRow();
+  moveToNextRow();
 }
 
 // Move on to next row for next guess
-// function moveToNextRow() {
-//   console.log("hi");
-//   let button = document.getElementById("submit-done");
-//   button.remove();
-//   userInput = [];
-//   generateRow();
-//   randomWordArray = randomWordString.split("");
-// }
-
-// Display losing message if all 6 rows have been guessed without success
-
-// Solve backspace and keypress problem
+function moveToNextRow() {
+  console.log("hi");
+  let button = document.getElementById("submit-done");
+  button.remove();
+  userInput = [];
+  generateRow();
+  randomWordArray = randomWordString.split("");
+}

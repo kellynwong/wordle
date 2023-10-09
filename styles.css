@@ -40,7 +40,8 @@ input {
   color: grey;
 }
 
-#winning-message {
+#winning-message,
+#losing-message {
   width: 200px;
   border: 1px solid;
   border-color: gray;
