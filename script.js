@@ -1,27 +1,525 @@
 // Choose a random 5 letter word (from an array of valid English words) when DOM is loaded
-arrayOfEnglishWords = [
-  "dream",
-  "guard",
-  "flood",
+let arrayOfEnglishWords = [
+  "about",
+  "abuse",
+  "above",
+  "actor",
+  "acute",
+  "admit",
+  "adopt",
   "adult",
-  "sight",
+  "after",
+  "again",
+  "agent",
+  "agree",
+  "ahead",
   "alarm",
-  "force",
-  "wound",
-  "brave",
-  "cable",
-  "panic",
-  "study",
-  "faith",
-  "equal",
-  "grade",
+  "album",
+  "alert",
+  "alike",
+  "alive",
+  "allow",
+  "alone",
+  "along",
+  "alter",
+  "among",
+  "anger",
+  "Angle",
+  "angry",
+  "apart",
+  "apple",
+  "apply",
+  "arena",
+  "argue",
+  "arise",
+  "array",
+  "aside",
+  "asset",
+  "audio",
+  "audit",
+  "avoid",
   "award",
-  "bully",
-  "voice",
+  "aware",
+  "badly",
+  "baker",
+  "bases",
+  "basic",
+  "basis",
+  "beach",
+  "began",
+  "begin",
+  "begun",
+  "being",
+  "below",
+  "bench",
+  "billy",
+  "birth",
+  "black",
+  "blame",
+  "blind",
+  "block",
+  "blood",
+  "board",
+  "boost",
+  "booth",
+  "bound",
+  "brain",
+  "brand",
+  "bread",
+  "break",
+  "breed",
+  "brief",
+  "bring",
+  "broad",
+  "broke",
+  "brown",
+  "build",
+  "built",
+  "buyer",
+  "cable",
+  "calif",
+  "carry",
+  "catch",
+  "cause",
+  "chain",
+  "chair",
+  "chart",
+  "chase",
+  "cheap",
+  "check",
+  "chest",
+  "chief",
+  "child",
+  "china",
+  "chose",
+  "civil",
+  "claim",
+  "class",
+  "clean",
+  "clear",
+  "click",
+  "clock",
+  "close",
+  "coach",
+  "coast",
+  "could",
+  "count",
+  "court",
+  "cover",
+  "craft",
+  "crash",
+  "cream",
+  "crime",
+  "cross",
+  "crowd",
+  "crown",
+  "curve",
+  "cycle",
+  "daily",
+  "dance",
+  "dated",
+  "dealt",
+  "death",
+  "debut",
+  "delay",
+  "depth",
+  "doing",
+  "doubt",
+  "dozen",
+  "draft",
+  "drama",
+  "drawn",
+  "dream",
+  "dress",
+  "drill",
+  "drink",
   "drive",
+  "drove",
+  "dying",
+  "eager",
+  "early",
+  "earth",
+  "eight",
+  "elite",
+  "empty",
+  "enemy",
+  "enjoy",
+  "enter",
+  "entry",
+  "equal",
+  "error",
+  "event",
+  "every",
+  "exact",
+  "exist",
+  "extra",
+  "faith",
+  "false",
+  "fault",
+  "fiber",
+  "field",
+  "fifth",
+  "fifty",
+  "fight",
+  "final",
+  "first",
+  "fixed",
+  "flash",
+  "fleet",
+  "floor",
+  "fluid",
+  "focus",
+  "force",
+  "forth",
+  "forty",
+  "forum",
+  "found",
+  "frame",
+  "frank",
+  "fraud",
+  "fresh",
+  "front",
+  "fruit",
+  "fully",
+  "funny",
+  "giant",
+  "given",
+  "glass",
+  "globe",
+  "going",
+  "grace",
+  "grade",
+  "grand",
+  "grant",
+  "grass",
+  "great",
+  "green",
+  "gross",
+  "group",
+  "grown",
+  "guard",
+  "guess",
+  "guest",
+  "guide",
+  "happy",
+  "harry",
+  "heart",
+  "heavy",
+  "hence",
+  "henry",
+  "horse",
+  "hotel",
+  "house",
+  "human",
+  "ideal",
+  "image",
+  "index",
+  "inner",
+  "input",
+  "issue",
+  "japan",
+  "jimmy",
+  "joint",
+  "jones",
+  "judge",
+  "known",
+  "label",
+  "large",
+  "laser",
+  "later",
+  "laugh",
+  "layer",
+  "learn",
+  "lease",
+  "least",
+  "leave",
+  "legal",
+  "level",
+  "lewis",
+  "light",
+  "limit",
+  "links",
+  "lives",
+  "local",
+  "logic",
+  "loose",
+  "lower",
+  "lucky",
+  "lunch",
+  "lying",
+  "magic",
+  "major",
+  "maker",
+  "march",
+  "maria",
+  "match",
+  "maybe",
+  "mayor",
+  "meant",
+  "media",
+  "metal",
+  "might",
+  "minor",
+  "minus",
+  "mixed",
+  "model",
+  "money",
+  "month",
+  "moral",
+  "motor",
+  "mount",
+  "mouse",
+  "mouth",
+  "movie",
+  "music",
+  "needs",
+  "never",
+  "newly",
+  "night",
+  "noise",
+  "north",
+  "noted",
+  "novel",
+  "nurse",
+  "occur",
+  "ocean",
+  "offer",
+  "often",
+  "order",
+  "other",
+  "ought",
+  "paint",
+  "panel",
+  "paper",
+  "party",
+  "peace",
+  "peter",
+  "phase",
+  "phone",
+  "photo",
+  "piece",
+  "pilot",
+  "pitch",
+  "place",
+  "plain",
+  "plane",
+  "plant",
+  "plate",
+  "point",
+  "pound",
+  "power",
+  "press",
+  "price",
+  "pride",
+  "prime",
+  "print",
+  "prior",
+  "prize",
+  "proof",
+  "proud",
+  "prove",
+  "queen",
+  "quick",
+  "quiet",
+  "quite",
+  "radio",
+  "raise",
+  "range",
+  "rapid",
+  "ratio",
+  "reach",
+  "ready",
+  "refer",
+  "right",
+  "rival",
+  "river",
+  "robin",
+  "roger",
+  "roman",
+  "rough",
+  "round",
+  "route",
+  "royal",
+  "rural",
+  "scale",
+  "scene",
+  "scope",
+  "score",
+  "sense",
+  "serve",
+  "seven",
+  "shall",
+  "shape",
+  "share",
+  "sharp",
+  "sheet",
+  "shelf",
+  "shell",
+  "shift",
+  "shirt",
+  "shock",
+  "shoot",
+  "short",
+  "shown",
+  "sight",
+  "since",
+  "sixth",
+  "sixty",
+  "sized",
+  "skill",
+  "sleep",
+  "slide",
+  "small",
+  "smart",
+  "smile",
+  "smith",
+  "smoke",
+  "solid",
+  "solve",
+  "sorry",
+  "sound",
+  "south",
+  "space",
+  "spare",
+  "speak",
+  "speed",
+  "spend",
+  "spent",
+  "split",
+  "spoke",
+  "sport",
+  "staff",
+  "stage",
+  "stake",
+  "stand",
+  "start",
+  "state",
+  "steam",
+  "steel",
+  "stick",
+  "still",
+  "stock",
+  "stone",
+  "stood",
+  "store",
+  "storm",
+  "story",
+  "strip",
+  "stuck",
+  "study",
+  "stuff",
+  "style",
+  "sugar",
+  "suite",
+  "super",
+  "sweet",
+  "table",
+  "taken",
+  "taste",
+  "taxes",
+  "teach",
+  "teeth",
+  "terry",
+  "texas",
+  "thank",
+  "theft",
+  "their",
+  "theme",
+  "there",
+  "these",
+  "thick",
+  "thing",
+  "think",
+  "third",
+  "those",
+  "three",
+  "threw",
+  "throw",
+  "tight",
+  "times",
+  "tired",
   "title",
-  "sully",
+  "today",
+  "topic",
+  "total",
+  "touch",
+  "tough",
+  "tower",
+  "track",
+  "trade",
+  "train",
+  "treat",
+  "trend",
+  "trial",
+  "tried",
+  "tries",
+  "truck",
+  "truly",
+  "trust",
+  "truth",
+  "twice",
+  "under",
+  "undue",
+  "union",
+  "unity",
+  "until",
+  "upper",
+  "upset",
+  "urban",
+  "usage",
+  "usual",
+  "valid",
+  "value",
+  "video",
+  "virus",
+  "visit",
+  "vital",
+  "voice",
+  "waste",
+  "watch",
+  "water",
+  "wheel",
+  "where",
+  "which",
+  "while",
+  "white",
+  "whole",
+  "whose",
+  "woman",
+  "women",
+  "world",
+  "worry",
+  "worse",
+  "worst",
+  "worth",
+  "would",
+  "wound",
+  "write",
+  "wrong",
 ];
+// arrayOfEnglishWords = [
+//   "dream",
+//   "guard",
+//   "flood",
+//   "adult",
+//   "sight",
+//   "alarm",
+//   "force",
+//   "wound",
+//   "brave",
+//   "cable",
+//   "panic",
+//   "study",
+//   "faith",
+//   "equal",
+//   "grade",
+//   "award",
+//   "bully",
+//   "voice",
+//   "drive",
+//   "title",
+//   "sully",
+// ];
 let userInput = [];
 let randomWordArray = [];
 let randomWordString;
@@ -36,19 +534,19 @@ function selectWordForGame() {
 
   randomWordArray = randomWordString.split("");
 }
-
 console.log(randomWordArray);
 
 // Generate a row of 6 squares (row) when DOM is loaded
-// Display losing message if all 6 rows have been guessed without success
 generateRow();
 function generateRow() {
   numOfTries += 1;
   if (numOfTries <= 6) {
-    let title = document.createElement("h1");
-    document.body.appendChild(title);
-    let row = document.createElement("div");
-    document.body.appendChild(row);
+    let form = document.createElement("form");
+    form.setAttribute("id", "form");
+
+    document.body.appendChild(form);
+    let div = document.createElement("div");
+    form.appendChild(div);
     for (let y = 0; y < 5; y++) {
       let input = document.createElement("input");
       input.setAttribute("type", "text");
@@ -56,20 +554,19 @@ function generateRow() {
       input.setAttribute("id", "a" + numOfTries.toString() + y.toString());
       input.setAttribute("class", numOfTries);
       input.setAttribute("style", "text-transform: uppercase");
-      input.addEventListener("keydown", validateUserInput);
-      row.appendChild(input);
+      input.addEventListener("keypress", validateUserInput);
+
+      input.addEventListener("keyup", moveFocus);
+
+      div.appendChild(input);
+      document.getElementById("a" + numOfTries.toString() + "0").focus();
     }
   } else {
-    let loseMessage = document.createElement("div");
-    loseMessage.setAttribute("id", "losing-message");
-    loseMessage.innerHTML =
-      "You have tried 6 times unsuccessfully, you have lost!";
-    document.body.append(loseMessage);
-    return;
+    displayLoseMessage();
   }
 }
 
-// Validate user's input - that they are alphabets
+// Validate user's input
 // https://forum.freecodecamp.org/t/pass-the-event-to-the-callback-within-the-event-listener-that-triggered-it/258259/8
 let alphabets = [
   "a",
@@ -98,32 +595,58 @@ let alphabets = [
   "x",
   "y",
   "z",
-  "tab",
 ];
 
 function validateUserInput(e) {
-  console.log(e);
-  if (e.key === "Backspace" || e.key === "Delete") {
-    userInput.pop();
-  } else if (alphabets.includes(e.key.toLowerCase()) === false) {
-    alert("This is not an alphabet!");
-  } else if (e.key != "Tab") {
-    userInput.push(e.key.toLowerCase());
-    console.log(userInput);
+  // Check that what user has input is an alphabet, otherwise, display "Not an Alphabet" alert
+  if (alphabets.includes(e.key) === false && e.key !== "Enter") {
+    e.preventDefault();
   }
-  if (userInput.length === 5) {
-    generateButton();
+
+  // Check that upon user pressing 'Enter' on keyboard, there are enough 5 letters, otherwise, display "Not Enough Letters" alert
+  if (e.key === "Enter") {
+    for (num = 0; num <= 4; num++) {
+      if (document.getElementById("a" + numOfTries + num).value === "") {
+        alert("Not Enough Letters");
+        return;
+      } else {
+        userInput.push(document.getElementById("a" + numOfTries + num).value);
+      }
+    }
+    // Check that if there are enough 5 letters to make up a word, check that the word is a valid english word, otherwise, display "Not in Word List" alert
+    if (arrayOfEnglishWords.includes(userInput.join("")) === false) {
+      alert("Not an English Word");
+    }
+    checkWord();
   }
 }
 
-// Generate button to submit word once user has entered 5 alphabets
-function generateButton() {
-  const button = document.createElement("button");
-  button.setAttribute("type", "submit");
-  button.setAttribute("id", "submit-done");
-  button.innerText = "SUBMIT";
-  document.body.append(button);
-  button.addEventListener("click", checkWord);
+// function moveFocus(e) {
+//   let idArr = e.target.nextSibling.id.split("");
+//   let lastArr = e.target.id.split("");
+//   console.log(lastArr);
+//   // console.log(e.target.id);
+
+//   // if (lastArr.length === 3) {
+//   //   document.getElementById("a" + numOfTries + "4").focus();
+//   // }
+
+//   if (idArr[idArr.length - 1] <= 4) {
+//     document.getElementById(e.target.nextSibling.id).focus();
+//     // } else if (lastArr.length === 3) {
+//     //   {
+//     //     console.log("hi");
+//     //     document.getElementById("a" + numOfTries + "4").focus();
+//     //   }
+//   } else {
+//     console.log("HELLO");
+//   }
+// }
+
+function moveFocus(e) {
+  if (e.target.nextSibling && e.key !== "Enter") {
+    document.getElementById(e.target.nextSibling.id).focus();
+  }
 }
 
 // Check if user input matches random word; useful guide: https://www.javascripttutorial.net/es6/javascript-array-findindex/
@@ -136,15 +659,20 @@ function checkWord() {
   console.log(userInput);
   console.log(randomWordArray);
   if (userInput.join() === randomWordArray.join()) {
-    let winMessage = document.createElement("div");
+    let winMessage = document.createElement("button");
+    winMessage.setAttribute("type", "submit");
     winMessage.setAttribute("id", "winning-message");
-    winMessage.innerHTML = "You have won";
+    winMessage.innerHTML = "You Have Won";
     document.body.append(winMessage);
 
     for (let b = 0; b <= 4; b++) {
       document
         .getElementById("a" + numOfTries.toString() + b.toString())
         .setAttribute("class", "green");
+
+      // document
+      //   .getElementById("winning-message")
+      //   .addEventListener("click", selectWordForGame);
     }
 
     return;
@@ -186,8 +714,18 @@ function checkWord() {
 function moveToNextRow() {
   console.log("hi");
   let button = document.getElementById("submit-done");
-  button.remove();
+
   userInput = [];
   generateRow();
   randomWordArray = randomWordString.split("");
+}
+
+// Display losing message if all 6 rows have been guessed without success
+function displayLoseMessage() {
+  let loseMessage = document.createElement("div");
+  loseMessage.setAttribute("id", "losing-message");
+  loseMessage.innerHTML =
+    "You have tried 6 times unsuccessfully, you have lost!";
+  document.body.append(loseMessage);
+  return;
 }
