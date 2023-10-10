@@ -497,53 +497,60 @@ let arrayOfEnglishWords = [
   "write",
   "wrong",
 ];
-// arrayOfEnglishWords = [
-//   "dream",
-//   "guard",
-//   "flood",
-//   "adult",
-//   "sight",
-//   "alarm",
-//   "force",
-//   "wound",
-//   "brave",
-//   "cable",
-//   "panic",
-//   "study",
-//   "faith",
-//   "equal",
-//   "grade",
-//   "award",
-//   "bully",
-//   "voice",
-//   "drive",
-//   "title",
-//   "sully",
-// ];
+
 let userInput = [];
 let randomWordArray = [];
 let randomWordString;
 let numOfTries = 0;
-selectWordForGame();
 
 function selectWordForGame() {
   randomWordString =
     arrayOfEnglishWords[
       Math.floor(Math.random() * arrayOfEnglishWords.length + 1)
     ]; // Returns a random integer from 0 to 18 (since length is 19), so need to add 1
-
   randomWordArray = randomWordString.split("");
 }
-console.log(randomWordArray);
 
-// Generate a row of 6 squares (row) when DOM is loaded
-generateRow();
+// Create start button and upon clicking, will generate a row, a random word for playing and start timer
+let title = document.createElement("h1");
+title.innerHTML = "Welcome to Game of Wordle";
+document.body.appendChild(title);
+
+let startButton = document.createElement("button");
+startButton.setAttribute("id", "start-button");
+startButton.setAttribute("class", "not-started");
+startButton.innerHTML = "Click Here to Start";
+startButton.addEventListener("click", generateRow);
+document.body.appendChild(startButton);
+
+// Create timer button
+let timer = document.createElement("button");
+timer.setAttribute("id", "timer");
+timer.innerHTML = count;
+document.body.appendChild(timer);
+let count = 0;
+let interval;
+
+// Set timer to start when start button is clicked
+function startTimer() {
+  clearInterval(interval);
+  interval = setInterval(function increaseNum() {
+    count += 1;
+    timer.innerHTML = count;
+  }, 1000);
+}
+
+// Generate a row of 6 squares (row) when DOM is loaded + all other functions to be called
 function generateRow() {
+  selectWordForGame();
+  startTimer();
+  document.getElementById("start-button").innerHTML = "Good Luck";
+  document.getElementById("start-button").setAttribute("class", "started");
+  console.log(randomWordArray);
   numOfTries += 1;
   if (numOfTries <= 6) {
     let form = document.createElement("form");
     form.setAttribute("id", "form");
-
     document.body.appendChild(form);
     let div = document.createElement("div");
     form.appendChild(div);
@@ -555,14 +562,19 @@ function generateRow() {
       input.setAttribute("class", numOfTries);
       input.setAttribute("style", "text-transform: uppercase");
       input.addEventListener("keypress", validateUserInput);
-
       input.addEventListener("keyup", moveFocus);
-
       div.appendChild(input);
       document.getElementById("a" + numOfTries.toString() + "0").focus();
     }
   } else {
     displayLoseMessage();
+  }
+}
+
+// Focus on next input element after user's input
+function moveFocus(e) {
+  if (e.target.nextSibling && e.key !== "Enter" && e.key !== "Backspace") {
+    document.getElementById(e.target.nextSibling.id).focus();
   }
 }
 
@@ -598,12 +610,10 @@ let alphabets = [
 ];
 
 function validateUserInput(e) {
-  console.log(userInput);
   // Check that what user has input is an alphabet, otherwise, display "Not an Alphabet" alert
   if (alphabets.includes(e.key) === false && e.key !== "Enter") {
     e.preventDefault();
   }
-
   // Check that upon user pressing 'Enter' on keyboard, there are enough 5 letters, otherwise, display "Not Enough Letters" alert
   if (e.key === "Enter") {
     for (num = 0; num <= 4; num++) {
@@ -615,10 +625,8 @@ function validateUserInput(e) {
         userInput.push(document.getElementById("a" + numOfTries + num).value);
       }
     }
-
     // Check that if there are enough 5 letters to make up a word, check that the word is a valid english word, otherwise, display "Not in Word List" alert
     if (arrayOfEnglishWords.includes(userInput.join("")) === false) {
-      console.log(userInput);
       alert("Not in Word List");
       userInput = [];
       return;
@@ -627,41 +635,11 @@ function validateUserInput(e) {
   }
 }
 
-// function moveFocus(e) {
-//   let idArr = e.target.nextSibling.id.split("");
-//   let lastArr = e.target.id.split("");
-//   console.log(lastArr);
-//   // console.log(e.target.id);
-
-//   // if (lastArr.length === 3) {
-//   //   document.getElementById("a" + numOfTries + "4").focus();
-//   // }
-
-//   if (idArr[idArr.length - 1] <= 4) {
-//     document.getElementById(e.target.nextSibling.id).focus();
-//     // } else if (lastArr.length === 3) {
-//     //   {
-//     //     console.log("hi");
-//     //     document.getElementById("a" + numOfTries + "4").focus();
-//     //   }
-//   } else {
-//     console.log("HELLO");
-//   }
-// }
-
-function moveFocus(e) {
-  console.log(e);
-  if (e.target.nextSibling && e.key !== "Enter" && e.key !== "Backspace") {
-    document.getElementById(e.target.nextSibling.id).focus();
-  }
-}
-
 // Check if user input matches random word; useful guide: https://www.javascripttutorial.net/es6/javascript-array-findindex/
 // Display winning message if all 5 spots match
 // Colour box green if letter guessed is in correct spot
 // Colour box orange if letter guessed is in wrong spot
 // Colour box grey if letter does not exist in word
-
 function checkWord() {
   console.log(userInput);
   console.log(randomWordArray);
@@ -676,7 +654,6 @@ function checkWord() {
       document
         .getElementById("a" + numOfTries.toString() + b.toString())
         .setAttribute("class", "green");
-
       // document
       //   .getElementById("winning-message")
       //   .addEventListener("click", selectWordForGame);
@@ -719,10 +696,8 @@ function checkWord() {
 
 // Move on to next row for next guess
 function moveToNextRow() {
-  console.log("hi");
-  let button = document.getElementById("submit-done");
-
   userInput = [];
+  count = 0;
   generateRow();
   randomWordArray = randomWordString.split("");
 }

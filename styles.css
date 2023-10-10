@@ -56,3 +56,39 @@ input {
   color: white;
   background-color: black;
 }
+
+.not-started {
+  width: 100px;
+  height: 40px;
+  margin-bottom: 20px;
+  margin-left: 150px;
+  border-radius: 10px;
+  background-color: white;
+  color: red;
+}
+
+.started {
+  width: 100px;
+  height: 40px;
+  margin-bottom: 20px;
+  margin-left: 150px;
+  border-radius: 10px;
+  background-color: white;
+  color: green;
+}
+
+#button-container {
+  display: flex;
+}
+
+#timer {
+  border-radius: 10px;
+  background-color: white;
+  color: green;
+  border: none;
+  margin-left: 50px;
+}
+
+.body {
+  color: red;
+}
