@@ -598,6 +598,7 @@ let alphabets = [
 ];
 
 function validateUserInput(e) {
+  console.log(userInput);
   // Check that what user has input is an alphabet, otherwise, display "Not an Alphabet" alert
   if (alphabets.includes(e.key) === false && e.key !== "Enter") {
     e.preventDefault();
@@ -608,14 +609,19 @@ function validateUserInput(e) {
     for (num = 0; num <= 4; num++) {
       if (document.getElementById("a" + numOfTries + num).value === "") {
         alert("Not Enough Letters");
+        userInput = [];
         return;
       } else {
         userInput.push(document.getElementById("a" + numOfTries + num).value);
       }
     }
+
     // Check that if there are enough 5 letters to make up a word, check that the word is a valid english word, otherwise, display "Not in Word List" alert
     if (arrayOfEnglishWords.includes(userInput.join("")) === false) {
-      alert("Not an English Word");
+      console.log(userInput);
+      alert("Not in Word List");
+      userInput = [];
+      return;
     }
     checkWord();
   }
@@ -644,7 +650,8 @@ function validateUserInput(e) {
 // }
 
 function moveFocus(e) {
-  if (e.target.nextSibling && e.key !== "Enter") {
+  console.log(e);
+  if (e.target.nextSibling && e.key !== "Enter" && e.key !== "Backspace") {
     document.getElementById(e.target.nextSibling.id).focus();
   }
 }
