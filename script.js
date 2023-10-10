@@ -502,6 +502,7 @@ let userInput = [];
 let randomWordArray = [];
 let randomWordString;
 let numOfTries = 0;
+selectWordForGame();
 
 function selectWordForGame() {
   randomWordString =
@@ -514,24 +515,25 @@ function selectWordForGame() {
 // Create start button and upon clicking, will generate a row, a random word for playing and start timer
 let title = document.createElement("h1");
 title.innerHTML = "Welcome to Game of Wordle";
+title.setAttribute("id", "title");
 document.body.appendChild(title);
 
 let startButton = document.createElement("button");
 startButton.setAttribute("id", "start-button");
 startButton.setAttribute("class", "not-started");
-startButton.innerHTML = "Click Here to Start";
+startButton.innerHTML = "Click to Start";
 startButton.addEventListener("click", generateRow);
 document.body.appendChild(startButton);
 
 // Create timer button
+let count = 0;
+let interval;
 let timer = document.createElement("button");
 timer.setAttribute("id", "timer");
 timer.innerHTML = count;
 document.body.appendChild(timer);
-let count = 0;
-let interval;
 
-// Set timer to start when start button is clicked
+// Set timer to start when start button is clicked - https://stackoverflow.com/questions/42794107/why-does-my-interval-go-faster-the-second-time-i-execute-it-jquery
 function startTimer() {
   clearInterval(interval);
   interval = setInterval(function increaseNum() {
@@ -542,9 +544,8 @@ function startTimer() {
 
 // Generate a row of 6 squares (row) when DOM is loaded + all other functions to be called
 function generateRow() {
-  selectWordForGame();
   startTimer();
-  document.getElementById("start-button").innerHTML = "Good Luck";
+  document.getElementById("start-button").innerHTML = "Timer";
   document.getElementById("start-button").setAttribute("class", "started");
   console.log(randomWordArray);
   numOfTries += 1;
@@ -573,8 +574,20 @@ function generateRow() {
 
 // Focus on next input element after user's input
 function moveFocus(e) {
-  if (e.target.nextSibling && e.key !== "Enter" && e.key !== "Backspace") {
+  console.log(e);
+  if (
+    e.target.nextSibling &&
+    e.key !== "Enter" &&
+    e.key !== "Backspace" &&
+    e.key !== "Shift"
+  ) {
     document.getElementById(e.target.nextSibling.id).focus();
+  }
+  if (e.target && e.key === "ArrowLeft") {
+    let idArray = e.target.id.split("");
+    console.log(idArray[idArray.length - 1] - 1);
+    let idToFocus = "a" + numOfTries + (idArray[idArray.length - 1] - 1);
+    document.getElementById(idToFocus).focus();
   }
 }
 
@@ -610,6 +623,8 @@ let alphabets = [
 ];
 
 function validateUserInput(e) {
+  console.log(e.target);
+
   // Check that what user has input is an alphabet, otherwise, display "Not an Alphabet" alert
   if (alphabets.includes(e.key) === false && e.key !== "Enter") {
     e.preventDefault();
@@ -707,7 +722,7 @@ function displayLoseMessage() {
   let loseMessage = document.createElement("div");
   loseMessage.setAttribute("id", "losing-message");
   loseMessage.innerHTML =
-    "You have tried 6 times unsuccessfully, you have lost!";
+    "You have tried 6 times unsuccessfully, you have lost";
   document.body.append(loseMessage);
   return;
 }
