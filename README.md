@@ -1,33 +1,63 @@
-# 🟩 Wordle Game
+# 🎮 Wordle Game Clone
 
-A simple, browser-based Wordle game inspired by the popular word puzzle game. The game allows users to guess a random 5-letter word within 6 attempts, with hints provided through color-coding.
+A simple web-based clone of the popular word-guessing game, Wordle.
+
+## 📋 Table of Contents
+
+- [Features](#-features)
+- [How to Play](#-how-to-play)
+- [Installation](#-installation)
+- [Technologies Used](#-technologies-used)
+- [Contributing](#-contributing)
+- [License](#-license)
 
 ## ✨ Features
 
-- 🎲 Randomly generates a 5-letter word from a predefined list.
-- 🕵️‍♂️ Provides users 6 attempts to guess the correct word.
-- 🟩 **Green**: The letter is in the correct position.
-- 🟧 **Orange**: The letter exists in the word but is in the wrong position.
-- ⬛ **Grey**: The letter is not in the word.
-- 🛠️ Built using vanilla JavaScript and DOM manipulation.
-- ⏱️ Includes a simple timer that tracks the time spent per round.
+- 🔤 Random 5-letter word selection
+- ⏱️ Timer to track gameplay duration
+- 6️⃣ Six attempts to guess the word
+- 🎨 Color-coded feedback on guesses
+- ⌨️ Keyboard input validation
 
-## 🎮 How to Play
+## 🕹️ How to Play
 
-1. Press "🎬 Click to Start" to begin the game and generate the first row of input boxes.
-2. ⌨️ Type a 5-letter word, then press **Enter** to submit your guess.
-3. After each guess, the input boxes will be color-coded to provide hints.
-4. Keep guessing until you either find the correct word or use all 6 attempts.
-5. The game displays a win 🏆 or loss 💀 message based on your performance.
+1. Click the "Start" button to begin the game
+2. Type a 5-letter word and press Enter
+3. The game will provide feedback:
+   - 🟩 Green: Correct letter in the correct position
+   - 🟧 Orange: Correct letter in the wrong position
+   - ⬜ Grey: Letter not in the word
+4. Keep guessing until you find the word or run out of attempts
 
-## 🛠️ Technologies Used
+## 🚀 Installation and Playing
 
-- 📝 **HTML** for structure.
-- 🎨 **CSS** for basic styling.
-- 🧠 **JavaScript** for the game logic and DOM manipulation.
+1. Clone the repository:
+   ```
+   git clone https://github.com/kellynwong/wordle.git
+   ```
+2. Navigate to the project directory:
+   ```
+   cd wordle
+   ```
+3. Open the `index.html` file in your web browser:
+   - On Windows: Right-click on `index.html` and select "Open with" > Choose your preferred browser
+   - On macOS: Right-click on `index.html` and select "Open With" > Choose your preferred browser
+   - On Linux: Right-click on `index.html` and select "Open With" > Choose your preferred browser
 
-## 🚀 Getting Started
+Alternatively, you can drag and drop the `index.html` file directly into your browser window.
 
-1. Clone the repository to your local machine:
-   ```bash
-   git clone https://github.com/yourusername/wordle-game.git
+4. The game should now load in your browser. Click the "Start" button to begin playing!
+
+## 💻 Technologies Used
+
+- HTML
+- CSS
+- JavaScript
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome! Feel free to check [issues page](https://github.com/kellynwong/wordle/issues).
+
+## 📄 License
+
+This project is [MIT](https://choosealicense.com/licenses/mit/) licensed.
